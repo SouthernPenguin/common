@@ -3,15 +3,18 @@ var DATE_INIT = {
    *  时间戳转换
    */
   timestampToTime: function (timestamp) {
-    console.log(timestamp)
+    console.log(timestamp);
     var date = getDate(timestamp * 1000); //时间戳为10位需*1000
     var Y = date.getFullYear() + '-';
-    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+    var M =
+      (date.getMonth() + 1 < 10
+        ? '0' + (date.getMonth() + 1)
+        : date.getMonth() + 1) + '-';
     var D = date.getDate() + ' ';
     var h = date.getHours() + ':';
     var m = date.getMinutes() + ':';
     var s = date.getSeconds();
-    return M + D
+    return M + D;
   },
   /**
    *  月 天 小时 分钟
@@ -19,7 +22,10 @@ var DATE_INIT = {
   MDhm: function (timestamp) {
     var date = getDate(timestamp * 1000); //时间戳为10位需*1000
     var Y = date.getFullYear() + '-';
-    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+    var M =
+      (date.getMonth() + 1 < 10
+        ? '0' + (date.getMonth() + 1)
+        : date.getMonth() + 1) + '-';
     var D = date.getDate() + ' ';
     var h = date.getHours() + ':';
     var m = date.getMinutes();
@@ -30,51 +36,82 @@ var DATE_INIT = {
    * 年 月 天 小时 分钟
    */
   YMDhm: function (timestamp) {
-    console.log(timestamp)
+    console.log(timestamp);
     var date = getDate(timestamp * 1000); //时间戳为10位需*1000
     var Y = date.getFullYear() + '-';
-    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+    var M =
+      (date.getMonth() + 1 < 10
+        ? '0' + (date.getMonth() + 1)
+        : date.getMonth() + 1) + '-';
     var D = date.getDate() + ' ';
     var h = date.getHours() + ':';
     var m = date.getMinutes() + ':';
     var s = date.getSeconds();
     return Y + M + D + h + m;
-  }
-}
+  },
+};
 
 var STRING_NUMBER = {
   /**
    * 自定义显示字符串数量，省略号结尾
-  */
+   */
   strLengthSlice: function (str, length) {
     if (str.length > length) {
-      return str.slice(0, length) + '...'
+      return str.slice(0, length) + '...';
     } else {
-      return str
+      return str;
     }
   },
   /**
    * 1000 ===> 1K
    * 10000 ===> 1M
-  */
-  filterNumber: function (number) { 
+   */
+  filterNumber: function (number) {
     if (number >= Math.pow(10, 3)) {
-      return (number / Math.pow(10, 3)).toFixed(1) + "K"
+      return (number / Math.pow(10, 3)).toFixed(1) + 'K';
     } else if (number >= Math.pow(10, 4)) {
-      return (number / Math.pow(10, 4)).toFixed(1) + "M"
+      return (number / Math.pow(10, 4)).toFixed(1) + 'M';
     } else {
-      return number
+      return number;
     }
   },
   /**
    * 字符串类型转数字类型
-  */
+   */
   toNumber: function (val) {
-    return parseInt(val)
-  }
-}
+    return parseInt(val);
+  },
+};
+
+var STRING_FUNCTION = {
+  /**
+   * 字符串截取
+   */
+  stringLengthToSix: function (str, length) {
+    if (str.length > length) {
+      return str.slice(0, length) + '...';
+    } else {
+      return str;
+    }
+  },
+  /**
+   * 字符串数字 转 数值数字
+   */
+  toNumber: function (val) {
+    return parseInt(val);
+  },
+  /**
+   * 字符串切割
+   */
+  stringToarray: function (text, type) {
+    var arr = text.split(type);
+    console.log(arr);
+    return arr;
+  },
+};
 
 module.exports = {
   DATE_INIT: DATE_INIT,
   STRING_NUMBER: STRING_NUMBER,
+  STRING_FUNCTION: STRING_FUNCTION,
 };
