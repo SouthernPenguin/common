@@ -18,7 +18,12 @@ const wxCommonAPI = {
       phoneNumber
     })
   },
-  showToast(title, icon = 'none', image = '', mask = false) {
+  showToast({
+    title,
+    icon,
+    image,
+    mask
+  }) {
     wx.showToast({
       title,
       icon,
@@ -32,7 +37,7 @@ const wxCommonAPI = {
   hideToast() {
     wx.hideToast()
   },
-  requestPayment(timeStamp, nonceStr, packageSub, signType, paySign) {
+  requestPayment({timeStamp, nonceStr, packageSub, signType, paySign}) {
     return new Promise((resolve, reject) => {
       wx.requestPayment({
         timeStamp,
@@ -40,16 +45,16 @@ const wxCommonAPI = {
         package: packageSub,
         signType,
         paySign,
-        success: (res) => { 
+        success: (res) => {
           resolve(res)
         },
-        fail(err) { 
+        fail(err) {
           reject(err)
         }
       })
     })
   },
-  navigateTo(url){
+  navigateTo(url) {
     wx.navigateTo({
       url
     })
